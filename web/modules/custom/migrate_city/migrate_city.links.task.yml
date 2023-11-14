@@ -1,0 +1,26 @@
+# City routing definition
+city.settings_tab:
+  route_name: city.settings
+  title: 'Settings'
+  base_route: city.settings
+
+entity.city.canonical:
+  route_name: entity.city.canonical
+  base_route: entity.city.canonical
+  title: 'View'
+
+entity.city.edit_form:
+  route_name: entity.city.edit_form
+  base_route: entity.city.canonical
+  title: 'Edit'
+
+entity.city.version_history:
+  route_name: entity.city.version_history
+  base_route: entity.city.canonical
+  title: 'Revisions'
+
+entity.city.delete_form:
+  route_name:  entity.city.delete_form
+  base_route:  entity.city.canonical
+  title: Delete
+  weight: 10

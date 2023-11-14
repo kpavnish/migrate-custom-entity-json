@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains migrate_city.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function migrate_city_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the migrate_city module.
+    case 'help.page.migrate_city':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Create custom entity and migrate data.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

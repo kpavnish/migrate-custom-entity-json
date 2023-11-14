@@ -1,0 +1,26 @@
+name: kaiciid
+recipe: lamp
+config:
+  via: apache
+  webroot: web
+  php: 7.4
+  database: mysql
+  xdebug: false
+services:
+  d7db:
+    type: mariadb
+    creds:
+      user: drupal7db
+      password: drupal7db
+      database: drupal7db
+    portforward: true
+  phpmyadmin:
+    type: phpmyadmin
+    hosts:
+      - d7db
+  phpmyadminfordrupal_8:
+    type: phpmyadmin
+    hosts:
+      - database
+
+

@@ -1,0 +1,39 @@
+<?php
+
+namespace Drupal\migrate_city;
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityListBuilder;
+use Drupal\Core\Link;
+
+/**
+ * Defines a class to build a listing of City entities.
+ *
+ * @ingroup migrate_city
+ */
+class CityListBuilder extends EntityListBuilder {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function buildHeader() {
+    $header['id'] = $this->t('City ID');
+    $header['name'] = $this->t('Name');
+    return $header + parent::buildHeader();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function buildRow(EntityInterface $entity) {
+    /* @var \Drupal\migrate_city\Entity\City $entity */
+    $row['id'] = $entity->id();
+    $row['name'] = Link::createFromRoute(
+      $entity->label(),
+      'entity.city.edit_form',
+      ['city' => $entity->id()]
+    );
+    return $row + parent::buildRow($entity);
+  }
+
+}

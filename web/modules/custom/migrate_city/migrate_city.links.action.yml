@@ -1,0 +1,5 @@
+entity.city.add_form:
+  route_name: entity.city.add_form
+  title: 'Add City'
+  appears_on:
+    - entity.city.collection

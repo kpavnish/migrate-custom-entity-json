@@ -1,0 +1,45 @@
+id: migratecitys
+label: import City from json
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - modules/custom/migrate_city/files/cities.json
+  item_selector: 
+  fields:
+    - name: title
+      label: "Name"
+      selector: city
+    - name: state
+      label: "State"
+      selector: state
+    - name: pop
+      label: "Pop"
+      selector: pop
+    - name: latitude
+      label: Latitude
+      selector: loc/0
+    - name: longitude
+      label: Longitude
+      selector: loc/1
+
+
+  ids:
+    title:
+      type: string
+process:
+  name: title
+  state: state
+  pop: pop
+  location:
+    plugin: geofield_latlon
+    source:
+      - latitude
+      - longitude
+  uid:
+    plugin: "default_value"
+    default_value: 1
+destination:
+  plugin: 'entity:city'
+    
